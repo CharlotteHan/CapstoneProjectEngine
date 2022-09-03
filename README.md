@@ -1,5 +1,8 @@
 # CapstoneProjectEngine
 
+run server: python manage.py runserver
+Mac OS: python3 manage.py runserver
+
 FOR TESTING:
 username: admin
 password: 123456
