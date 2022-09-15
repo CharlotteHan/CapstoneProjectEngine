@@ -7,6 +7,17 @@
 </head>
 <body>
   <main>
+	{% block header %}
+	{% endblock %}
+	{% block sidebar %}
+		{% if user.is_authenticated %}
+				<ul class="sidebar-nav">
+				  <li><a href="{% url 'home' %}">Home</a></li>
+				  <li><a href="">Function1</a></li>
+				  <li><a href="">Function2</a></li>
+				  </ul>
+		{% endif %}
+	{% endblock %}
     {% block content %}
     {% endblock %}
   </main>
