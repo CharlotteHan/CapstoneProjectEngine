@@ -18,7 +18,7 @@ def detail(request, project_id):
         project = Project.objects.get(pk = project_id)
     except Project.DoesNotExist:
         raise Http404("Project does not exist")
-    return render(request, 'detail.html', {'project': project}) 
+    return render(request, 'detail.html', {'project': project,}) 
 
 def modify(request, project_id):
     return HttpResponse("You're changing project %s." % project_id)
