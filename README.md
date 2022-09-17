@@ -8,6 +8,11 @@ username: admin<br/>
 password: 123456<br/> 
 email: admin@example.com<br/> 
 
+username: testuser1<br/>
+password: sponsoruser1<br/>
+username: testUser2<br/>
+password: studenttest1<br/>
+
 home page:  http://127.0.0.1:8000/<br/> 
 login page: http://127.0.0.1:8000/accounts/login/<br/> 
 signup page: http://127.0.0.1:8000/accounts/signup/<br/> 
