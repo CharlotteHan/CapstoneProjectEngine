@@ -1,0 +1,14 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+{% if oldest_project_list %}
+    <ul>
+    {% for project in oldest_project_list %}
+        <li><a href="{% url 'detail' project.id %}">{{ project.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No projects are available.</p>
+{% endif %}
+{% endblock %}

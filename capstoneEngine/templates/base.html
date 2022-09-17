@@ -13,15 +13,17 @@
 			<h1>Capstone Project Allocation Engine</h1>
 		</div>
 	{% endblock %}
-	{% block sidebar %}
 		{% if user.is_authenticated %}
 		<div class = sidebar>
 			<a href="{% url 'home' %}">Home</a>
+			{% block sidebar %}
 			<a href="">Function1</a>
 			<a href="">Function2</a>
+			<p><a href="{% url 'logout' %}">Log Out</a></p>
+			<p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+			{% endblock %}
 		</div>
 		{% endif %}
-	{% endblock %}
   <main>
 	<div class = "body">
     {% block content %}

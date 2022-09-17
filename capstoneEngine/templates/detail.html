@@ -1,0 +1,12 @@
+<!-- templates/detail.html -->
+{% extends 'base.html' %}
+{% block content %}
+	<li>Project name: {{project.title}}</li>
+	<li>Project sponsor: {{project.sponsor_id}}</li>
+	<li>Project description: {{project.description}}</li>
+	<li>In scope: {{project.in_scope}}</li>
+	<li>Out scope: {{project.out_scope}}</li>
+	<li>Required skills: {{project.skill}}</li>
+	<li>Team size: {{project.team_size}}</li>
+	<li>duration: {{project.duration}}</li>
+{% endblock %}
