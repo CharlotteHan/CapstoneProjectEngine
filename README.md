@@ -25,4 +25,6 @@ password reset complete page: http://127.0.0.1:8000/accounts/reset/done/<br/>
 
 project list page: http://127.0.0.1:8000/projects/ <br/>
 project detail page: http://127.0.0.1:8000/projects/1/ <br/>
+project create page: http://127.0.0.1:8000/create <br/>
+
 
