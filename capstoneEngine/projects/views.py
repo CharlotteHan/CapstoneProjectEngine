@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 
 from .models import Project
@@ -34,9 +34,13 @@ def create(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
+            project = form.save(commit=False)
+            project.sponsor_id=user=request.user.profile
+            project.is_allocated=False
+            project.save()
+            return HttpResponseRedirect('/projects/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = ProjectForm(None)
+        form = ProjectForm()
     return render(request, 'create.html', {'form': form}) 

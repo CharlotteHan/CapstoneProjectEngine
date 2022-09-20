@@ -1,11 +1,9 @@
 <!-- templates/create.html -->
 {% extends 'base.html' %}
 {% block content %}
-<form action="/your-name/" method="post">
-    {% csrf_token %}
-	{% for field in form %}
-		<li>{{field.label_tag}} {{field}}</li>
-	{% endfor %}
+<form  method="post">
+	{% csrf_token %}
+	{{ form }}
     <input type="submit" value="Submit">
 </form>
 {% endblock %}
