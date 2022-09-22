@@ -16,12 +16,19 @@
 		{% if user.is_authenticated %}
 		<div class = sidebar>
 			<a href="{% url 'home' %}">Home</a>
-			{% block sidebar %}
-			<a href="">Function1</a>
-			<a href="">Function2</a>
+			{% if user.profile.identity == 1 %}
+				<a href="">Project Allocation(TODO)</a>
+				<a href="{% url 'index' %}">Project List</a>
+			{% elif user.profile.identity == 2 %}
+				<a href="{% url 'create' %}">Create Project</a>
+				<a href="{% url 'myprojects' %}">My Projects</a>
+			{% elif user.profile.identity == 3 %}
+				<a href="{% url 'index' %}">Project List</a>
+				<a href="">EOI(TODO)</a>
+				<a href="">My Project(TODO)</a>
+			{% endif %}
 			<p><a href="{% url 'logout' %}">Log Out</a></p>
 			<p><a href="{% url 'password_reset' %}">Reset Password</a></p>
-			{% endblock %}
 		</div>
 		{% endif %}
   <main>

@@ -7,7 +7,7 @@ from .forms import ProjectForm
 
 # Create your views here.
 def index(request):
-    oldest_project_list = Project.objects.order_by('-id')[:20]
+    oldest_project_list = Project.objects.order_by('-id').reverse()
     template = loader.get_template('index.html')
     context = {
         'oldest_project_list': oldest_project_list,    
@@ -44,3 +44,14 @@ def create(request):
     else:
         form = ProjectForm()
     return render(request, 'create.html', {'form': form}) 
+
+def myprojects(request):
+    oldest_project_list = Project.objects.filter(sponsor_id = request.user.profile)
+    template = loader.get_template('index.html')
+    context = {
+        'oldest_project_list': oldest_project_list,    
+    }
+    return HttpResponse(template.render(context, request))
+
+def myproject(request):
+    return HttpResponse("You're browsing your project")
