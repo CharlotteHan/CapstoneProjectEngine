@@ -1,0 +1,9 @@
+<!-- templates/userprofile.html -->
+{% extends 'base.html' %}
+{% block content %}
+    <li>uid: {{curruser.user}}</li>
+    <li>Name: {{curruser.name}}</li>
+    <li>Contact: {{user.email}}</li>
+    <li>Unit Code: {{curruser.unit_code}}</li>
+	<a href="{% url 'password_reset' %}">Reset Password</a>
+{% endblock %}

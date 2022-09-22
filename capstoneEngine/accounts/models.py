@@ -19,8 +19,13 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.TextField(max_length=500, blank=True)
     identity = models.IntegerField(choices=Identity.choices, default = 3)
-    is_in_group = models.BooleanField(blank=True)
+    is_in_group = models.BooleanField(blank=True, default= False)
     unit_code = models.IntegerField(choices=Units.choices, blank=True)
+    project_id = models.IntegerField(blank=True, null=True)
+    choice1 = models.IntegerField(blank=True, null=True)
+    choice2 = models.IntegerField(blank=True, null=True)
+    choice3 = models.IntegerField(blank=True, null=True)
+    
 
 
 
