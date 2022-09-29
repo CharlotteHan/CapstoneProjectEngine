@@ -1,12 +1,58 @@
 <!-- templates/detail.html -->
 {% extends 'base.html' %}
 {% block content %}
-	<li>Project name: {{project.title}}</li>
-	<li>Project sponsor: {{project.sponsor_id.name}}</li>
-	<li>Project description: {{project.description}}</li>
-	<li>In scope: {{project.in_scope}}</li>
-	<li>Out scope: {{project.out_scope}}</li>
-	<li>Required skills: {{project.skill}}</li>
-	<li>Team size: {{project.team_size}}</li>
-	<li>duration: {{project.duration}}</li>
+<section class="ProCon Huans">
+			<div class="ProTitH flexC fl-cen">
+				<div class="ProTit Huans ProTits flexC">
+					<i class="flexC fl-bet"></i><p>{{project.title}}</p><i class="flexC fl-bet"></i>
+				</div>
+			</div>
+            <div class="ProConN Huans">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ProTab">
+					<tbody>
+                    <tr>
+                    <tr>
+							<td>Description</td>
+							<td>{{project.description}}</td>
+						</tr>
+						<tr>
+							<td>Contacts</td>
+							<td>{{creator.email}}</td>
+						</tr>
+						<tr>
+							<td>In-scope</td>
+							<td>{{project.in_scope}}</td>
+						</tr>
+						<tr>
+							<td>Out-of-scope</td>
+							<td>{{project.out_scope}}</td>
+						</tr>
+						<tr>
+							<td>Skill requirements</td>
+							<td>{{project.skill}}</td>
+						</tr>
+						<tr>
+							<td>Project team size </td>
+							<td>{{project.team_size}}</td>
+						</tr>
+						<tr>
+							<td>Likely duration</td>
+							<td>{{project.duration}}</td>
+						</tr>
+						<tr>
+							<td>Team information</td>
+                            {% if project.is_allocated %}
+							    <td>Team information</td>
+                            {% else %}
+							    <td>Not allocated</td>
+                            {% endif %}
+						</tr>
+						<tr>
+							<td>Sponsor information</td>
+							<td>{{project.sponsor_id.name}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
 {% endblock %}

@@ -9,33 +9,37 @@
 </head>
 <body>
 	{% block header %}
-		<div class="header">
-			<h1>Capstone Project Allocation Engine</h1>
-		</div>
+    	<header class="ProHd">
+            <div class="ward ProHdL Huans flex fl-end">
+		    </div>
+		    <div class="ProHdN flexC fl-cen">
+			    <p>ITS CAPSTONE ENGINE</p>
+		    </div>
+	    </header>
 	{% endblock %}
+    <article class="ProK ward Huans flex fl-bet">
 		{% if user.is_authenticated %}
-		<div class = sidebar>
-			<a href="{% url 'home' %}">Home</a>
+		<section class = sidebar>
+			<a href="{% url 'home' %}", class="ProNava Huans flexC fl-cen">Home</a>
 			{% if user.profile.identity == 1 %}
-				<a href="">Project Allocation(TODO)</a>
-				<a href="{% url 'index' %}">Project List</a>
+				<a href="", class="ProNava Huans flexC fl-cen">Project Allocation(TODO)</a>
+				<a href="{% url 'index' %}", class="ProNava Huans flexC fl-cen">Project List</a>
 			{% elif user.profile.identity == 2 %}
-				<a href="{% url 'create' %}">Create Project</a>
-				<a href="{% url 'myprojects' %}">My Projects</a>
+				<a href="{% url 'create' %}", class="ProNava Huans flexC fl-cen">Create Project</a>
+				<a href="{% url 'myprojects' %}", class="ProNava Huans flexC fl-cen">My Projects</a>
 			{% elif user.profile.identity == 3 %}
-				<a href="{% url 'index' %}">Project List</a>
-				<a href="">EOI(TODO)</a>
-				<a href="">My Project(TODO)</a>
+				<a href="{% url 'index' %}", class="ProNava Huans flexC fl-cen">Project List</a>
+				<a href="", class="ProNava Huans flexC fl-cen">EOI(TODO)</a>
+				<a href="", class="ProNava Huans flexC fl-cen">My Project(TODO)</a>
 			{% endif %}
-			<p><a href="{% url 'myprofile' %}">Profile</a></p>
-			<p><a href="{% url 'logout' %}">Log Out</a></p>
-		</div>
+			<p><a href="{% url 'myprofile' %}", class="ProNava Huans flexC fl-cen">Profile</a></p>
+			<p><a href="{% url 'logout' %}", class="ProNava Huans flexC fl-cen">Log Out</a></p>
+		</section>
 		{% endif %}
   <main>
-	<div class = "body">
     {% block content %}
     {% endblock %}
-	</div>
   </main>
+  </article>
 </body>
 </html>

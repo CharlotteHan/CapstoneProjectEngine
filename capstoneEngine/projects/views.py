@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.contrib.auth.models import User
 
 from .models import Project
 from .forms import ProjectForm
@@ -17,9 +18,10 @@ def index(request):
 def detail(request, project_id):
     try:
         project = Project.objects.get(pk = project_id)
+        creator = User.objects.get(username = project.sponsor_id.user)
     except Project.DoesNotExist:
         raise Http404("Project does not exist")
-    return render(request, 'detail.html', {'project': project,}) 
+    return render(request, 'detail.html', {'project': project, 'creator': creator}) 
 
 def modify(request, project_id):
     return HttpResponse("You're changing project %s." % project_id)

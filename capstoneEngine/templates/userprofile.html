@@ -1,9 +1,27 @@
 <!-- templates/userprofile.html -->
 {% extends 'base.html' %}
 {% block content %}
-    <li>uid: {{curruser.user}}</li>
-    <li>Name: {{curruser.name}}</li>
-    <li>Contact: {{user.email}}</li>
-    <li>Unit Code: {{curruser.unit_code}}</li>
-	<a href="{% url 'password_reset' %}">Reset Password</a>
+<section class="ProCon Huans">
+{% if user.is_authenticated %}
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>Profile</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
+    <div class="ProConN Huans">
+        <li>uid: {{curruser.user}}</li>
+        <li>Name: {{curruser.name}}</li>
+        <li>Contact: {{user.email}}</li>
+        <li>Unit Code: {{curruser.unit_code}}</li>
+	    <a href="{% url 'password_reset' %}">Reset Password</a>
+    </div>
+{% else %}
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>You are not logged in</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
+    <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+</section>
 {% endblock %}

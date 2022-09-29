@@ -4,10 +4,17 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-</form>
+<section class="logCon Huans">
+    <div class="logConT">LOGIN</div>
+    <form method="post", class="logFor Huans">
+        {% csrf_token %}
+
+        {% for i in form %}
+            <div class="logForD Huans flexC">
+                {{i.label}}{{i}}
+			</div>
+        {% endfor %}
+    <button type="submit" class="logFora Huans">login</a>
+    </form>
+</section>
 {% endblock %}

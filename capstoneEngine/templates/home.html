@@ -4,10 +4,23 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+<section class="ProCon Huans">
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>Introduce</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
+    <div class="ProConN Huans">
+				<p>Construction project refers to a project consisting of one or several single projects within the scope of an overall design or preliminary design, which is subject to unified economic accounting and unified administrative management. Its composition can be divided into single project, unit project (sub unit project), divisional project (sub divisional project), sub divisional project and inspection lot according to the needs of decomposition management of construction projects. In general, the term "construction project" is often used in infrastructure, civil engineering, railway, electromechanical, civil aviation, ports, water conservancy and hydropower, mining, municipal, communication, radio and television and other construction fields.</p>
+    </div>
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>You are not logged in</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
+    <a href="{% url 'login' %}">Log In</a>
 {% endif %}
+</section>
 {% endblock %}
