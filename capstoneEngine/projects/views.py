@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 from .models import Project
 from .forms import ProjectForm
+from .forms import EOIForm
 
 # Create your views here.
 def index(request):
@@ -29,12 +30,9 @@ def modify(request, project_id):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ProjectForm(request.POST, instance=project)
-        # check whether it's valid:
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/projects/')
-
-    # if a GET (or any other method) we'll create a blank form
     else:
         form = ProjectForm(instance=project)
     return render(request, 'modify.html', {'form': form,'project': project}) 
@@ -70,3 +68,16 @@ def myprojects(request):
 
 def myproject(request):
     return HttpResponse("You're browsing your project")
+
+def eoi(request):
+ # if this is a POST request we need to process the form data
+    profile = request.user.profile
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = EOIForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/projects/')
+    else:
+        form = EOIForm(instance=profile)
+    return render(request, 'eoi.html', {'form': form}) 

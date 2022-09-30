@@ -29,7 +29,7 @@
 				<a href="{% url 'myprojects' %}", class="ProNava Huans flexC fl-cen">My Projects</a>
 			{% elif user.profile.identity == 3 %}
 				<a href="{% url 'index' %}", class="ProNava Huans flexC fl-cen">Project List</a>
-				<a href="", class="ProNava Huans flexC fl-cen">EOI(TODO)</a>
+				<a href="{% url 'eoi' %}", class="ProNava Huans flexC fl-cen">EOI</a>
 				<a href="", class="ProNava Huans flexC fl-cen">My Project(TODO)</a>
 			{% endif %}
 			<p><a href="{% url 'myprofile' %}", class="ProNava Huans flexC fl-cen">Profile</a></p>
