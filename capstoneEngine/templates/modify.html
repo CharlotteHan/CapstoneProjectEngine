@@ -1,0 +1,13 @@
+<!-- templates/detail.html -->
+{% extends 'base.html' %}
+{% block content %}
+    {% if project.sponsor_id == user.profile %}
+        <form  method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    {% else %}
+        <p> You are not authorised </p>
+    {% endif %}
+{% endblock %}

@@ -24,7 +24,20 @@ def detail(request, project_id):
     return render(request, 'detail.html', {'project': project, 'creator': creator}) 
 
 def modify(request, project_id):
-    return HttpResponse("You're changing project %s." % project_id)
+ # if this is a POST request we need to process the form data
+    project = Project.objects.get(pk=project_id)
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = ProjectForm(request.POST, instance=project)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/projects/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = ProjectForm(instance=project)
+    return render(request, 'modify.html', {'form': form,'project': project}) 
 
 def create(request):
  # if this is a POST request we need to process the form data
