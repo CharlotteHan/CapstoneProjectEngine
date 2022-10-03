@@ -3,7 +3,9 @@
 {% block content %}
 <form  method="post">
 	{% csrf_token %}
-	{{ form }}
+    {% for i in form %}
+        <li>{{i.label}} {{i}}</li>
+    {% endfor %}
     <input type="submit" value="Submit">
 </form>
 {% endblock %}

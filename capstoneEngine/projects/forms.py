@@ -8,6 +8,9 @@ class ProjectForm(forms.ModelForm):
         fields = ['title','description','in_scope','out_scope','team_size','duration']
 
 class EOIForm(forms.ModelForm):
+    group_member1 = forms.CharField(max_length=50, label='Group Member ID')
+    group_member2 = forms.CharField(max_length=50, label='Group Member ID')
+    group_member3 = forms.CharField(max_length=50, label='Group Member ID', required=False)
     class Meta:
         model = Profile
         fields = ['choice1','choice2','choice3']

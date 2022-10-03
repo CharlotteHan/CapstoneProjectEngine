@@ -1,9 +1,18 @@
 <!-- templates/eoi.html -->
 {% extends 'base.html' %}
 {% block content %}
-<form  method="post">
-	{% csrf_token %}
-	{{ form }}
-    <input type="submit" value="Submit">
-</form>
+<section class="ProCon Huans">
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>Submit EOI</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
+    <form  method="post">
+	    {% csrf_token %}
+        {% for i in form %}
+            <li>{{i.label}} {{i}}</li>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</section>
 {% endblock %}

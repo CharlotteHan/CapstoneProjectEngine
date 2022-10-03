@@ -15,4 +15,5 @@ urlpatterns = [
     path('<int:project_id>/allocate', views.allocate, name='allocate'),
     path('eoi_details/', views.eoi_details, name='eoi_details'),
     path('eoi/',views.eoi,name='eoi'),
+    path('eoi_submitted/', views.eoi_submitted, name='eoi_submitted'),
 ]

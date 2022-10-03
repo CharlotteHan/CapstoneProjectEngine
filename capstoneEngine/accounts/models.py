@@ -9,18 +9,18 @@ class Profile(models.Model):
         SPONSOR = 2
         STUDENT = 3
     class Units(models.IntegerChoices):
-        0
-        9785
-        9786
-        10004
-        10005
-        10098
-        11522
+        DEFAULT = 0,'0'
+        A = 9785,'9785'
+        B = 9786, '9786'
+        C = 10004, '10004'
+        D = 10005, '10005'
+        E = 10098, '10098'
+        F = 11522, '11522'
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.TextField(max_length=500, blank=True)
     identity = models.IntegerField(choices=Identity.choices, default = 3)
     is_in_group = models.BooleanField(blank=True, default= False)
-    unit_code = models.IntegerField(choices=Units.choices, blank=True, default=0)
+    unit_code = models.IntegerField(choices=Units.choices, blank=True)
     project_id = models.IntegerField(blank=True, null=True)
     choice1 = models.IntegerField(blank=True, null=True)
     choice2 = models.IntegerField(blank=True, null=True)

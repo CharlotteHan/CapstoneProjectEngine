@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from django.contrib.auth.models import User
 
@@ -75,12 +75,42 @@ def eoi(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = EOIForm(request.POST, instance=profile)
+        students = []
+        students.append(profile)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/projects/')
+            try:
+                student1 = User.objects.get(username = form.cleaned_data['group_member1'])
+                student2 = User.objects.get(username = form.cleaned_data['group_member2'])
+                students.append(student1.profile)
+                students.append(student2.profile)
+                if form.cleaned_data['group_member3']:
+                    student3 = User.objects.get(username = form.cleaned_data['group_member3'])
+                    students.append(student3.profile)
+            except User.DoesNotExist:
+                raise Http404("Wrong group member id")
+            for i in students:
+                form = EOIForm(request.POST, instance=i)
+                form.save()
+            return HttpResponseRedirect('/projects/eoi_submitted/')
     else:
         form = EOIForm(instance=profile)
     return render(request, 'eoi.html', {'form': form}) 
+
+def eoi_details(request):
+    if request.user.profile.choice1 == None:
+        return render(request, 'eoi_details.html',{})
+    else:
+        projects = []
+        project1 = Project.objects.get(pk = request.user.profile.choice1)
+        project2 = Project.objects.get(pk = request.user.profile.choice2)
+        project3 = Project.objects.get(pk = request.user.profile.choice3)
+        projects.append(project1)
+        projects.append(project2)
+        projects.append(project3)
+        return render(request, 'eoi_details.html',{'projects': projects, 'project2': project2, 'project3': project3})
+
+def eoi_submitted(request):
+    return render(request, 'eoi_submitted.html',{})
 
 def project_list(request):
     return render(request, 'project_list_choice.html',{})
@@ -104,15 +134,3 @@ def unallocated(request):
 def allocate(request, project_id):
     return HttpResponse("You're browsing allocate")
 
-def eoi_details(request):
-    if request.user.profile.choice1 == None:
-        return render(request, 'eoi_details.html',{})
-    else:
-        projects = []
-        project1 = Project.objects.get(pk = request.user.profile.choice1)
-        project2 = Project.objects.get(pk = request.user.profile.choice2)
-        project3 = Project.objects.get(pk = request.user.profile.choice3)
-        projects.append(project1)
-        projects.append(project2)
-        projects.append(project3)
-        return render(request, 'eoi_details.html',{'projects': projects, 'project2': project2, 'project3': project3})
