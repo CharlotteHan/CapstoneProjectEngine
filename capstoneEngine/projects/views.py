@@ -81,3 +81,38 @@ def eoi(request):
     else:
         form = EOIForm(instance=profile)
     return render(request, 'eoi.html', {'form': form}) 
+
+def project_list(request):
+    return render(request, 'project_list_choice.html',{})
+
+def allocated(request):
+    oldest_project_list = Project.objects.filter(is_allocated = True).reverse()
+    template = loader.get_template('index.html')
+    context = {
+        'oldest_project_list': oldest_project_list,    
+    }
+    return HttpResponse(template.render(context, request))
+
+def unallocated(request):
+    oldest_project_list = Project.objects.filter(is_allocated = False).reverse()
+    template = loader.get_template('index.html')
+    context = {
+        'oldest_project_list': oldest_project_list,    
+    }
+    return HttpResponse(template.render(context, request))
+
+def allocate(request, project_id):
+    return HttpResponse("You're browsing allocate")
+
+def eoi_details(request):
+    if request.user.profile.choice1 == None:
+        return render(request, 'eoi_details.html',{})
+    else:
+        projects = []
+        project1 = Project.objects.get(pk = request.user.profile.choice1)
+        project2 = Project.objects.get(pk = request.user.profile.choice2)
+        project3 = Project.objects.get(pk = request.user.profile.choice3)
+        projects.append(project1)
+        projects.append(project2)
+        projects.append(project3)
+        return render(request, 'eoi_details.html',{'projects': projects, 'project2': project2, 'project3': project3})

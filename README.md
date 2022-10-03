@@ -12,6 +12,7 @@ username: testuser1<br/>
 password: sponsoruser1<br/>
 username: testUser2<br/>
 password: studenttest1<br/>
+more test users as students following the same format<br/>
 
 home page:  http://127.0.0.1:8000/<br/> 
 login page: http://127.0.0.1:8000/accounts/login/<br/> 
@@ -27,5 +28,7 @@ project list page: http://127.0.0.1:8000/projects/ <br/>
 project detail page: http://127.0.0.1:8000/projects/1/ <br/>
 project create page: http://127.0.0.1:8000/create <br/>
 project modify page: http://127.0.0.1:8000/projects/1/modify <br/>
+project allocation page: http://127.0.0.1:8000/projects/1/allocate <br/>
 
-
+project eoi detail page: http://127.0.0.1:8000/projects/eoi_details/<br/>
+submit a new eoi: http://127.0.0.1:8000/projects/eoi/

@@ -1,0 +1,23 @@
+<!-- templates/project_list_choice.html -->
+{% extends 'base.html' %}
+{% block content %}
+<section class="ProCon Huans">
+    <ul class="ProConU">
+				<li>
+					<a href="{% url 'index' %}" class="ProTit Huans ProTita flexC">
+						<i class="flexC fl-bet"></i><p>All Projects</p><i class="flexC fl-bet"></i>
+					</a>
+				</li>
+				<li>
+					<a href="{% url 'unallocated' %}" class="ProTit Huans ProTita flexC">
+						<i class="flexC fl-bet"></i><p>Unallocated Projects</p><i class="flexC fl-bet"></i>
+					</a>
+				</li>
+				<li>
+					<a href="{% url 'allocated' %}" class="ProTit Huans ProTita flexC">
+						<i class="flexC fl-bet"></i><p>Allocated Projects</p><i class="flexC fl-bet"></i>
+					</a>
+				</li>
+			</ul>
+</section>
+{% endblock %}

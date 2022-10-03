@@ -9,5 +9,10 @@ urlpatterns = [
     path('create/', views.create, name='create'),
     path('my_projects/', views.myprojects, name='myprojects'),
     path('my_project/', views.myproject, name='myproject'),
+    path('project_list',views.project_list,name='project_list'),
+    path('allocated',views.allocated,name='allocated'),
+    path('unallocated',views.unallocated,name='unallocated'),
+    path('<int:project_id>/allocate', views.allocate, name='allocate'),
+    path('eoi_details/', views.eoi_details, name='eoi_details'),
     path('eoi/',views.eoi,name='eoi'),
 ]

@@ -20,7 +20,7 @@ class Profile(models.Model):
     name = models.TextField(max_length=500, blank=True)
     identity = models.IntegerField(choices=Identity.choices, default = 3)
     is_in_group = models.BooleanField(blank=True, default= False)
-    unit_code = models.IntegerField(choices=Units.choices, blank=True)
+    unit_code = models.IntegerField(choices=Units.choices, blank=True, default=0)
     project_id = models.IntegerField(blank=True, null=True)
     choice1 = models.IntegerField(blank=True, null=True)
     choice2 = models.IntegerField(blank=True, null=True)

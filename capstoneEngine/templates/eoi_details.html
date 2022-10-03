@@ -1,0 +1,26 @@
+<!-- templates/eoi_details.html -->
+{% extends 'base.html' %}
+{% block content %}
+<section class="ProCon Huans">
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>My EOI</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
+    {% if user.profile.choice1 == None %}
+    <p>There is no EOI at the moment</p>
+    {% else %}
+
+    {% for project in projects %}
+        <li><a href="{% url 'detail' project.id %}">{{ project.title }}</a></li>
+    {% endfor %}
+    {% endif %}
+    <ul class="ProConU">
+				<li>
+					<a href="{% url 'eoi' %}" class="ProTit Huans ProTita flexC">
+						<i class="flexC fl-bet"></i><p>Submit a new EOI</p><i class="flexC fl-bet"></i>
+					</a>
+				</li>
+			</ul>
+</section>
+{% endblock %}

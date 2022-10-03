@@ -61,5 +61,12 @@
 				</div>
 			</div>
             {% endif %}
+			{% if user.profile.identity == 1 %}
+			<div class="ProTitH flexC fl-cen">
+				<div class="ProTit Huans ProTits flexC">
+					<i class="flexC fl-bet"></i><a href="{% url 'allocate' project.id %}"><p>Allocate</a></p><i class="flexC fl-bet"></i>
+				</div>
+			</div>
+            {% endif %}
 		</section>
 {% endblock %}

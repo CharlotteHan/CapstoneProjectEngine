@@ -22,15 +22,15 @@
 		<section class = sidebar>
 			<a href="{% url 'home' %}", class="ProNava Huans flexC fl-cen">Home</a>
 			{% if user.profile.identity == 1 %}
-				<a href="", class="ProNava Huans flexC fl-cen">Project Allocation(TODO)</a>
-				<a href="{% url 'index' %}", class="ProNava Huans flexC fl-cen">Project List</a>
+				<a href="{% url 'unallocated' %}", class="ProNava Huans flexC fl-cen">Project Allocation</a>
+				<a href="{% url 'project_list' %}", class="ProNava Huans flexC fl-cen">Project List</a>
 			{% elif user.profile.identity == 2 %}
 				<a href="{% url 'create' %}", class="ProNava Huans flexC fl-cen">Create Project</a>
 				<a href="{% url 'myprojects' %}", class="ProNava Huans flexC fl-cen">My Projects</a>
 			{% elif user.profile.identity == 3 %}
 				<a href="{% url 'index' %}", class="ProNava Huans flexC fl-cen">Project List</a>
-				<a href="{% url 'eoi' %}", class="ProNava Huans flexC fl-cen">EOI</a>
-				<a href="", class="ProNava Huans flexC fl-cen">My Project(TODO)</a>
+				<a href="{% url 'eoi_details' %}", class="ProNava Huans flexC fl-cen">EOI</a>
+				<a href="{% url 'myproject' %}", class="ProNava Huans flexC fl-cen">My Project</a>
 			{% endif %}
 			<p><a href="{% url 'myprofile' %}", class="ProNava Huans flexC fl-cen">Profile</a></p>
 			<p><a href="{% url 'logout' %}", class="ProNava Huans flexC fl-cen">Log Out</a></p>
