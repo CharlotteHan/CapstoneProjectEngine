@@ -32,6 +32,13 @@ class Group(models.Model):
     choice2 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice2', default='1')
     choice3 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice3', default='1')
 
+    def __str__(self):
+        s=""
+        for i in self.member.all():
+            s+=i.name
+            s+=" "
+        return s
+
 
 
 @receiver(post_save, sender=User)

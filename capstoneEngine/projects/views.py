@@ -4,8 +4,7 @@ from django.template import loader
 from django.contrib.auth.models import User
 
 from .models import Project
-from .forms import ProjectForm
-from .forms import EOIForm
+from .forms import ProjectForm, EOIForm, AllocateForm
 from accounts.models import Group
 
 # Create your views here.
@@ -143,5 +142,19 @@ def unallocated(request):
     return HttpResponse(template.render(context, request))
 
 def allocate(request, project_id):
-    return HttpResponse("You're browsing allocate")
-
+ # if this is a POST request we need to process the form data
+    project = Project.objects.get(pk=project_id)
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = AllocateForm(request.POST, instance=project)
+        if form.is_valid():
+            project = form.save(commit=False)
+            if project.member == None:
+                project.is_allocated=False
+            else:
+                project.is_allocated=True
+            project.save()
+            return HttpResponseRedirect('/projects/')
+    else:
+        form = AllocateForm(instance=project)
+    return render(request, 'modify.html', {'form': form,'project': project}) 

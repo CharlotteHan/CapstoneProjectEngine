@@ -1,7 +1,14 @@
 <!-- templates/modify.html -->
 {% extends 'base.html' %}
 {% block content %}
+<section class="ProCon Huans">
     {% if project.sponsor_id == user.profile %}
+        <form  method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    {% elif user.profile.identity == 1 %}
         <form  method="post">
             {% csrf_token %}
             {{ form }}
@@ -10,4 +17,5 @@
     {% else %}
         <p> You are not authorised </p>
     {% endif %}
+</section>
 {% endblock %}

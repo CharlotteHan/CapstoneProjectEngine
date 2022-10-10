@@ -42,9 +42,9 @@
 						<tr>
 							<td>Team information</td>
                             {% if project.is_allocated %}
-							    <td>Team information</td>
+							    <td>{{project.member}}</td>
                             {% else %}
-							    <td>Not allocated</td>
+                                <td>Not allocated</td>
                             {% endif %}
 						</tr>
 						<tr>

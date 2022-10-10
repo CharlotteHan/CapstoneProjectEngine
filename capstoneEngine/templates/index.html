@@ -2,6 +2,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<section class="ProCon Huans">
 {% if oldest_project_list %}
     <ul>
     {% for project in oldest_project_list %}
@@ -11,4 +12,5 @@
 {% else %}
     <p>No projects are available.</p>
 {% endif %}
+</section>
 {% endblock %}

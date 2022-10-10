@@ -1,6 +1,7 @@
 <!-- templates/create.html -->
 {% extends 'base.html' %}
 {% block content %}
+<section class="ProCon Huans">
 <form  method="post">
 	{% csrf_token %}
     {% for i in form %}
@@ -8,4 +9,5 @@
     {% endfor %}
     <input type="submit" value="Submit">
 </form>
+</section>
 {% endblock %}

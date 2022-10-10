@@ -20,3 +20,8 @@ class EOIForm(forms.ModelForm):
             'choice2': _('Choice2'),
             'choice3': _('Choice3'),
         }
+        
+class AllocateForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['member']
