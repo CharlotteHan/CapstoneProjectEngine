@@ -2,17 +2,29 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="ProCon Huans">
+    {% if projects == None %}
     <div class="ProTitH flexC fl-cen">
         <div class="ProTit Huans ProTits flexC">
             <i class="flexC fl-bet"></i><p>My EOI</p><i class="flexC fl-bet"></i>
         </div>
     </div>
-    {% if user.profile.choice1 == None %}
     <p>There is no EOI at the moment</p>
     {% else %}
-
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>My Team Members</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
+    {% for member in team_members %}
+        <li><a>{{ member }}</a></li>
+    {% endfor %}
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>My EOI</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
     {% for project in projects %}
-        <li><a href="{% url 'detail' project.id %}">{{ project.title }}</a></li>
+        <li><a href="{% url 'detail' project.id %}">{{ project }}</a></li>
     {% endfor %}
     {% endif %}
     <ul class="ProConU">

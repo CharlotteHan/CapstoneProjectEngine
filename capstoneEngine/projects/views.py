@@ -77,7 +77,6 @@ def eoi(request):
         # create a form instance and populate it with data from the request:
         form = EOIForm(request.POST)
         students = []
-        students.append(profile)
         if form.is_valid():
             try:
                 student1 = User.objects.get(username = form.cleaned_data['group_member1'])
@@ -99,6 +98,10 @@ def eoi(request):
             form = EOIForm(request.POST, instance=Group.objects.filter(member = profile).first())
             group = form.save(commit=False)
             for i in students:
+                # Remove duplicate groups for group members
+                if Group.objects.filter(member = i):
+                    tmp = Group.objects.filter(member = i)
+                    tmp.delete()
                 group.member.add(i)
             group.save()
             return HttpResponseRedirect('/projects/eoi_submitted/')
@@ -107,17 +110,15 @@ def eoi(request):
     return render(request, 'eoi.html', {'form': form}) 
 
 def eoi_details(request):
-    if request.user.profile.choice1 == None:
-        return render(request, 'eoi_details.html',{})
-    else:
+    if Group.objects.filter(member = request.user.profile):
+        group = Group.objects.filter(member=request.user.profile).first()
         projects = []
-        project1 = Project.objects.get(pk = request.user.profile.choice1)
-        project2 = Project.objects.get(pk = request.user.profile.choice2)
-        project3 = Project.objects.get(pk = request.user.profile.choice3)
-        projects.append(project1)
-        projects.append(project2)
-        projects.append(project3)
-        return render(request, 'eoi_details.html',{'projects': projects, 'project2': project2, 'project3': project3})
+        projects.append(group.choice1)
+        projects.append(group.choice2)
+        projects.append(group.choice3)
+        return render(request, 'eoi_details.html',{'projects': projects, 'team_members': group.member.all()})
+    else:
+        return render(request, 'eoi_details.html',{})
 
 def eoi_submitted(request):
     return render(request, 'eoi_submitted.html',{})

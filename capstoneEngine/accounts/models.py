@@ -22,12 +22,9 @@ class Profile(models.Model):
     is_in_group = models.BooleanField(blank=True, default= False)
     unit_code = models.IntegerField(choices=Units.choices, blank=True)
     project_id = models.IntegerField(blank=True, null=True)
-    choice1 = models.IntegerField(blank=True, null=True)
-    choice2 = models.IntegerField(blank=True, null=True)
-    choice3 = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.user.username
+        return self.name+'('+self.user.username+')'
 
 class Group(models.Model):
     member = models.ManyToManyField(Profile, blank=True)
