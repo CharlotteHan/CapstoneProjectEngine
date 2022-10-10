@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from .models import Project
 from .forms import ProjectForm
 from .forms import EOIForm
+from accounts.models import Group
 
 # Create your views here.
 def index(request):
@@ -74,7 +75,7 @@ def eoi(request):
     profile = request.user.profile
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = EOIForm(request.POST, instance=profile)
+        form = EOIForm(request.POST)
         students = []
         students.append(profile)
         if form.is_valid():
@@ -88,12 +89,21 @@ def eoi(request):
                     students.append(student3.profile)
             except User.DoesNotExist:
                 raise Http404("Wrong group member id")
+            # delete previous group information if the user has a group
+            if Group.objects.filter(member = profile):
+                group = Group.objects.filter(member = profile)
+                group.delete()
+            group = Group.objects.create()
+            group.member.add(profile)
+            group.save()
+            form = EOIForm(request.POST, instance=Group.objects.filter(member = profile).first())
+            group = form.save(commit=False)
             for i in students:
-                form = EOIForm(request.POST, instance=i)
-                form.save()
+                group.member.add(i)
+            group.save()
             return HttpResponseRedirect('/projects/eoi_submitted/')
     else:
-        form = EOIForm(instance=profile)
+        form = EOIForm()
     return render(request, 'eoi.html', {'form': form}) 
 
 def eoi_details(request):
