@@ -3,12 +3,32 @@
 
 {% block content %}
 <section class="ProCon Huans">
+<div class="ProTit eleTit Huans flexC fl-cen">
+				<i class="flexC fl-bet"></i><p> Project List</p><i class="flexC fl-bet"></i>
+			</div>
 {% if oldest_project_list %}
-    <ul>
+    <div class="ProJe Huans">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="JesTab">
+				<tbody>
+					<tr>
+						<th>Project ID</th>
+						<th>Project Name</th>
+						<th>Brief Description</th>
+						<th>Sponsor/AS</th>
+						<th>Allocated Group</th>
+					</tr>
     {% for project in oldest_project_list %}
-        <li><a href="{% url 'detail' project.id %}">{{ project.title }}</a></li>
+					<tr>
+						<td>{{ project.id}} </td>
+						<td><a href="{% url 'detail' project.id %}">{{ project.title }}</a></td>
+						<td>{{ project.description }}</td>
+						<td>{{ project.sponsor_id.name }}</td>
+						<td>{{ project.member }}</td>
+					</tr>
     {% endfor %}
-    </ul>
+					</tbody>
+				</table>
+			</div>
 {% else %}
     <p>No projects are available.</p>
 {% endif %}

@@ -317,53 +317,132 @@ input[type="reset"],select {
 	left:-20px; 
 }
 
-/*
-display:flex;justify-content:space-between;align-items:center; flex-wrap:wrap;align-content:center
-|flex-start|flex-end|center|space-between|space-around
 
-overflow: hidden;text-overflow:ellipsis;white-space: nowrap;
-display:-webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;
-
-transform: translate(0,-50%);left:0;top:50%;
-
-transition:0.5s;
-.IndEnvT:before,.IndEnvT:after{display:block;content:'';position: absolute;}
-*/
-
-/*.header {
-  width: 100%;
-  text-align: center;
-  background: #1abc9c;
-  color: white;
-  font-size: 15px;
-  position: fixed;
-  z-index: 2;
+/***********************/
+.TenConU{width:100%;}
+.TenConU .ProTit{
+	margin:0 auto;
+	text-align: center;
 }
-.sidebar {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1; 
-  top: 0;
-  left: 0;
-  background-color: #111; 
-  overflow-x: hidden; 
-  padding-top: 80px;
-
+.TenConU .ProTit p{
+	padding:0 15px;
+	width:auto;
+	min-width:140px;
+}
+.TenConN{
+	width:200px;
+	margin:20px auto 60px;
+}
+.TenConNa{
+	padding-left: 22px;
+	position: relative;
+	line-height:30px;
+	display: block;
+	font-size:18px;
+	color:#343434;
+}
+.TenConNa:before{
+	display:block;
+	content:'';
+	position: absolute;
+	background:#0082e0;
+	width: 6px;
+	height:6px;
+	transform: translate(0,-50%);
+	left:0;
+	top:50%;
+}
+/***********************/
+.eleDK{
+	padding:10px 0 80px;
+	width:100%;
+}
+.eleTit{
+	text-align: center;
+	margin:0 auto;
+}
+.eleDK .eleTit p{
+	min-width:150px;
+}
+.eleFor{
+	width:480px;
+	margin:50px auto 0;
+}
+.eleForD{width:100%; margin-bottom:15px;
+}
+.eleForP{
+	font-size:18px;
+	color:#343434;
+	line-height:30px;
+	margin-right:15px;
+}
+.eleForI{
+	width:100%;
+	padding:0 24px;
+	height:56px;
+	line-height:56px;
+	font-size:18px;
+	color:#343434;
+	background:#ededed;
+	border-radius:4px;
+	display: block;
+	flex:1;
+	border:none;
 }
 
+.eleFora{
+	background:#1983d1;
+	color:#FFF;
+	border-radius:4px;
+	display: block;
+	height:56px;
+	line-height:56px;
+	text-align:center;
+	font-size:22px;
+	margin-top:60px;
+}
+.eleFora:hover{
+	background:#2472aa;
+}
+/********************************/
 
-.sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
+.ProJe{
+	padding-top:20px;
+}
+.JesTab{
+	border:1px solid #b6c5dc;
+	width:100%;
+}
+.JesTab tr th{
+	border-left:2px solid #b6c5dc;
+	background:#2472aa;
+	color:#FFF;
+	font-size:18px;
+	line-height:30px;
+	padding:13px 33px;
+}
+.JesTab tr th:first-child{
+	border-left:none;
+}
+.JesTab tr td{
+	border-top:2px solid #b6c5dc;
+	border-left:2px solid #b6c5dc;
+	color:#343434;
+	font-size:18px;
+	line-height:30px;
+	padding:13px 33px;
+}
+.JesTab tr td:first-child{
+	border-left:none;
+	text-align: center;
+}
+.JesTab tr:first-child td{
+	border-top:none;
+}
+.JesTab tr:nth-child(2n) td{
+	background:#e8effb;
+}
+.JesTab tr:nth-child(2n+1) td{
+	background:#d9e2f3;
 }
 
-
-.body {
-  padding-top: 80px;
-  padding-left: 180px;
-
-}*/
