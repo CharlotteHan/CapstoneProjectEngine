@@ -20,8 +20,7 @@ class Profile(models.Model):
     name = models.TextField(max_length=500, blank=True)
     identity = models.IntegerField(choices=Identity.choices, default = 3)
     is_in_group = models.BooleanField(blank=True, default= False)
-    unit_code = models.IntegerField(choices=Units.choices, blank=True, default = 0)
-    project_id = models.IntegerField(blank=True, null=True)
+    unit_code = models.IntegerField(choices=Units.choices, blank=True)
 
     def __str__(self):
         return self.name+'('+self.user.username+')'
@@ -31,6 +30,7 @@ class Group(models.Model):
     choice1 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice1', default='1')
     choice2 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice2', default='1')
     choice3 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice3', default='1')
+    is_allocated = models.BooleanField(default = False)
 
     def __str__(self):
         s=""

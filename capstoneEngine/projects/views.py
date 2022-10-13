@@ -50,6 +50,7 @@ def create(request):
             project = form.save(commit=False)
             project.sponsor_id=user=request.user.profile
             project.is_allocated=False
+            project.member=None
             project.save()
             return HttpResponseRedirect('/projects/')
 
@@ -57,6 +58,10 @@ def create(request):
     else:
         form = ProjectForm()
     return render(request, 'create.html', {'form': form}) 
+    
+def delete(request, project_id):
+    Project.objects.get(pk=project_id).delete()
+    return HttpResponseRedirect('/projects/')
 
 def myprojects(request):
     oldest_project_list = Project.objects.filter(sponsor_id = request.user.profile)
@@ -153,8 +158,11 @@ def allocate(request, project_id):
                 project.is_allocated=False
             else:
                 project.is_allocated=True
+                project.member.is_allocated = True
+                project.member.save()
             project.save()
             return HttpResponseRedirect('/projects/')
     else:
         form = AllocateForm(instance=project)
+        form.fields["member"].queryset = Group.objects.filter(choice1 = project, is_allocated=False) | Group.objects.filter(choice2 = project, is_allocated=False) | Group.objects.filter(choice3 = project, is_allocated=False)
     return render(request, 'modify.html', {'form': form,'project': project}) 
