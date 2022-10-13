@@ -226,7 +226,8 @@ input[type="reset"],select {
 	background:rgba(255,255,255,0.14);
 }
 .logCon{ 
-	width:460px;
+    margin-left: 360px;
+    width:460px;
 	height:410px;
 	background:#b8dbed;
 	border-radius:7px;
@@ -366,7 +367,7 @@ input[type="reset"],select {
 }
 .eleFor{
 	width:480px;
-	margin:50px auto 0;
+	margin:50px 0;
 }
 .eleForD{width:100%; margin-bottom:15px;
 }
@@ -380,6 +381,20 @@ input[type="reset"],select {
 	width:100%;
 	padding:0 24px;
 	height:56px;
+	line-height:56px;
+	font-size:18px;
+	color:#343434;
+	background:#ededed;
+	border-radius:4px;
+	display: block;
+	flex:1;
+	border:none;
+}
+
+.eleForIT{
+	width:100%;
+	padding:0 24px;
+	height:100%;
 	line-height:56px;
 	font-size:18px;
 	color:#343434;

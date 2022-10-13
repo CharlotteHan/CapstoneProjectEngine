@@ -2,12 +2,20 @@
 {% extends 'base.html' %}
 {% block content %}
 <section class="ProCon Huans">
-<form  method="post">
-	{% csrf_token %}
-    {% for i in form %}
-        <li>{{i.label}} {{i}}</li>
-    {% endfor %}
-    <input type="submit" value="Submit">
-</form>
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>Create Project</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
+    <form  method="post", class = "eleFor">
+	    {% csrf_token %}
+        {% for i in form %}
+        <div class="eleForD eleTit Huans flexC fl-bet">
+            <div class="eleForP">{{i.label}}</div>
+            {{i}}
+        </div>
+        {% endfor %}
+        <a><input type="submit" class="eleFora Huans flexC" value="Submit" style="width:100%"></a>
+    </form>
 </section>
 {% endblock %}

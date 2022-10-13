@@ -24,6 +24,8 @@
 			{% if user.profile.identity == 1 %}
 				<a href="{% url 'unallocated' %}", class="ProNava Huans flexC fl-cen">Project Allocation</a>
 				<a href="{% url 'project_list' %}", class="ProNava Huans flexC fl-cen">Project List</a>
+				<a href="{% url 'create' %}", class="ProNava Huans flexC fl-cen">Create Project</a>
+				<a href="{% url 'myprojects' %}", class="ProNava Huans flexC fl-cen">My Projects</a>
 			{% elif user.profile.identity == 2 %}
 				<a href="{% url 'create' %}", class="ProNava Huans flexC fl-cen">Create Project</a>
 				<a href="{% url 'myprojects' %}", class="ProNava Huans flexC fl-cen">My Projects</a>
