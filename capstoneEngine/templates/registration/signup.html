@@ -5,11 +5,26 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
+    <div class="ProTitH flexC fl-cen">
+        <div class="ProTit Huans ProTits flexC">
+            <i class="flexC fl-bet"></i><p>Sign Up</p><i class="flexC fl-bet"></i>
+        </div>
+    </div>
+  <form method="post" class = "eleFor">
     {% csrf_token %}
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
-    <button type="submit">Sign Up</button>
+    {% for i in user_form %}
+        <div class="eleForD eleTit Huans flexC fl-bet">
+            <div class="eleForP">{{i.label}}</div>
+            {{i}}
+            {{i.help_text}}
+        </div>
+    {% endfor %}
+    {% for i in profile_form %}
+        <div class="eleForD eleTit Huans flexC fl-bet">
+            <div class="eleForP">{{i.label}}</div>
+            {{i}}
+        </div>
+    {% endfor %}
+    <button type="submit" class="eleFora Huans flexC" style="width:100%">Submit</button>
   </form>
 {% endblock %}
