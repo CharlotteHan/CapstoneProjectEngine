@@ -19,10 +19,9 @@ def index(request):
 def detail(request, project_id):
     try:
         project = Project.objects.get(pk = project_id)
-        creator = User.objects.get(username = project.sponsor_id.user)
     except Project.DoesNotExist:
         raise Http404("Project does not exist")
-    return render(request, 'detail.html', {'project': project, 'creator': creator}) 
+    return render(request, 'detail.html', {'project': project}) 
 
 def modify(request, project_id):
  # if this is a POST request we need to process the form data
@@ -72,7 +71,12 @@ def myprojects(request):
     return HttpResponse(template.render(context, request))
 
 def myproject(request):
-    return HttpResponse("You're browsing your project")
+    group = Group.objects.filter(member = request.user.profile)
+    if group.exists():
+        if group.first().is_allocated != False:
+            project = Project.objects.get(member = group.first())
+            return render(request, 'detail.html', {'project': project}) 
+    return render(request, 'myprojectblank.html',{})
 
 def eoi(request):
  # if this is a POST request we need to process the form data

@@ -16,7 +16,9 @@
         </div>
     </div>
     {% for member in team_members %}
+    <div class="ProConN Huans">
         <li><a>{{ member }}</a></li>
+    </div>
     {% endfor %}
     <div class="ProTitH flexC fl-cen">
         <div class="ProTit Huans ProTits flexC">
@@ -24,7 +26,9 @@
         </div>
     </div>
     {% for project in projects %}
+        <div class="ProTit Huans ProTits flexC">
         <li><a href="{% url 'detail' project.id %}">{{ project }}</a></li>
+        </div>
     {% endfor %}
     {% endif %}
     <ul class="ProConU">
