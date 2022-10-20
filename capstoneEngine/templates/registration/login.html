@@ -8,7 +8,6 @@
     <div class="logConT">LOGIN</div>
     <form method="post", class="logFor Huans">
         {% csrf_token %}
-
         {% for i in form %}
             <div class="logForD Huans flexC">
                 {{i.label}}{{i}}
