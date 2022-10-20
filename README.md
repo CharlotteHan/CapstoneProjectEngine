@@ -1,4 +1,5 @@
 # CapstoneProjectEngine
+install Django into your system: https://docs.djangoproject.com/en/4.1/topics/install/<br/>
 
 run server: python manage.py runserver<br/> 
 Mac OS: python3 manage.py runserver<br/><br/> 
