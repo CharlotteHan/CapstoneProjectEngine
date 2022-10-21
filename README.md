@@ -5,6 +5,7 @@ run server: python manage.py runserver<br/>
 Mac OS: python3 manage.py runserver<br/><br/> 
 
 FOR TESTING:<br/> 
+manage all data(USE ADMIN ACCOUNT): http://127.0.0.1:8000/admin<br/>
 username: admin<br/> 
 password: 123456<br/> 
 email: admin@example.com<br/><br/> 
@@ -13,11 +14,7 @@ username: testuser1<br/>
 password: sponsoruser1<br/>
 username: testUser2<br/>
 password: studenttest1<br/>
-more test users as students following the same format<br/><br/>
-
-from: testUser5:<br/>
-username: testUser5<br/>
-password: mytestStudent4<br/><br/>
+more test users up to testUser7 as students following the same format<br/><br/>
 
 home page:  http://127.0.0.1:8000/<br/> 
 login page: http://127.0.0.1:8000/accounts/login/<br/> 

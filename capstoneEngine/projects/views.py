@@ -97,28 +97,28 @@ def eoi(request):
             except User.DoesNotExist:
                 raise Http404("Wrong group member id")
             # delete previous group information if the user has a group
-            if Group.objects.filter(member = profile):
-                group = Group.objects.filter(member = profile)
-                group.delete()
-            group = Group.objects.create()
-            group.member.add(profile)
-            group.save()
+            if Group.objects.filter(member = profile).exists():
+                mygroup = Group.objects.filter(member = profile)
+                mygroup.delete()
+            mygroup = Group.objects.create()
+            mygroup.member.add(profile)
+            mygroup.save()
             form = EOIForm(request.POST, instance=Group.objects.filter(member = profile).first())
-            group = form.save(commit=False)
+            mygroup = form.save(commit=False)
             for i in students:
                 # Remove duplicate groups for group members
                 if Group.objects.filter(member = i):
                     tmp = Group.objects.filter(member = i)
                     tmp.delete()
-                group.member.add(i)
-            group.save()
+                mygroup.member.add(i)
+            mygroup.save()
             return HttpResponseRedirect('/projects/eoi_submitted/')
     else:
         form = EOIForm()
     return render(request, 'eoi.html', {'form': form}) 
 
 def eoi_details(request):
-    if Group.objects.filter(member = request.user.profile):
+    if Group.objects.filter(member = request.user.profile).exists():
         group = Group.objects.filter(member=request.user.profile).first()
         projects = []
         projects.append(group.choice1)
@@ -156,6 +156,9 @@ def allocate(request, project_id):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = AllocateForm(request.POST, instance=project)
+        if project.member != None:
+            project.member.is_allocated=False
+            project.member.save()
         if form.is_valid():
             project = form.save(commit=False)
             if project.member == None:
