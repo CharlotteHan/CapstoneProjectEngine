@@ -1,4 +1,6 @@
-# CapstoneProjectEngine
+# CapstoneProjectEngine<br/>
+Download project as a zip: To do this, click on the green Code button, then download the repository as a ZIP file.<br/>
+The filename may be different than what's in the picture. Find the downloaded . zip file on your computer, likely in your Downloads folder.<br/>
 install Django into your system: https://docs.djangoproject.com/en/4.1/topics/install/<br/>
 
 run server: python manage.py runserver<br/> 
