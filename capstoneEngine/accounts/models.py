@@ -27,17 +27,17 @@ class Profile(models.Model):
 
 class Group(models.Model):
     member = models.ManyToManyField(Profile, blank=True)
-    choice1 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice1', default='1')
-    choice2 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice2', default='1')
-    choice3 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice3', default='1')
-    is_allocated = models.BooleanField(default = False)
-
+    choice1 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice1', default='2', blank=True, null=True)
+    choice2 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice2', default='2', blank=True, null=True)
+    choice3 = models.ForeignKey('projects.Project', on_delete = models.CASCADE, related_name='choice3', default='2', blank=True, null=True)
+    is_allocated = models.BooleanField(default = False, blank=True, null=True)
     def __str__(self):
         s=""
         for i in self.member.all():
             s+=i.name
             s+=" "
         return s
+
 
 
 

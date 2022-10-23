@@ -14,7 +14,7 @@ class Project(models.Model):
     skill = models.TextField(blank = False, default=' ')
     team_size = models.IntegerField(blank = False, default=4)
     duration = models.IntegerField(blank=False,default=12)
-    member = models.ForeignKey('accounts.Group', on_delete=models.CASCADE, null=True, blank=True, related_name='allocated_group', default='1')
+    member = models.ForeignKey('accounts.Group', on_delete=models.SET_NULL, null=True, blank=True, related_name='allocated_group')
 
     def __str__(self):
         return self.title

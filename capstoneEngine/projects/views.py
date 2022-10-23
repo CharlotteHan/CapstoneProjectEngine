@@ -80,7 +80,7 @@ def myproject(request):
 
 def eoi(request):
  # if this is a POST request we need to process the form data
-    profile = request.user.profile
+    myprofile = request.user.profile
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = EOIForm(request.POST)
@@ -97,17 +97,17 @@ def eoi(request):
             except User.DoesNotExist:
                 raise Http404("Wrong group member id")
             # delete previous group information if the user has a group
-            if Group.objects.filter(member = profile).exists():
-                mygroup = Group.objects.filter(member = profile)
+            if Group.objects.filter(member = myprofile).exists():
+                mygroup = Group.objects.filter(member = myprofile)
                 mygroup.delete()
             mygroup = Group.objects.create()
-            mygroup.member.add(profile)
+            mygroup.member.add(myprofile)
             mygroup.save()
-            form = EOIForm(request.POST, instance=Group.objects.filter(member = profile).first())
+            form = EOIForm(request.POST, instance=Group.objects.filter(member = myprofile).first())
             mygroup = form.save(commit=False)
             for i in students:
                 # Remove duplicate groups for group members
-                if Group.objects.filter(member = i):
+                if Group.objects.filter(member = i).exists():
                     tmp = Group.objects.filter(member = i)
                     tmp.delete()
                 mygroup.member.add(i)
